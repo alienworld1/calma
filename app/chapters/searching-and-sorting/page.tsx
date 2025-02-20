@@ -18,7 +18,7 @@ export default async function Page() {
         </h1>
       </header>
       <main className="flex-1">
-        <h2 className="text-2xl font-bold text-white p-4">Unlocked Chapters</h2>
+        <h2 className="text-2xl font-bold text-white p-4">Unlocked Lessons</h2>
         <ul className="flex flex-col gap-2 m-4 text-lg">
           <li className="flex items-center gap-4">
             <Image
@@ -32,7 +32,7 @@ export default async function Page() {
               href={'/chapters/searching-and-sorting'}
               className="rounded px-4 py-2 bg-accent-light text-black hover:bg-accent-dark transition-colors duration-300"
             >
-              Searching and Sorting
+              Linear Search
             </Link>
           </li>
         </ul>
