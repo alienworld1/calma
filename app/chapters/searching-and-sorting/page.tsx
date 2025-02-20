@@ -29,7 +29,7 @@ export default async function Page() {
               className="flex-none"
             />
             <Link
-              href={'/chapters/searching-and-sorting'}
+              href={'/lessons/linear-search/story'}
               className="rounded px-4 py-2 bg-accent-light text-black hover:bg-accent-dark transition-colors duration-300"
             >
               Linear Search
