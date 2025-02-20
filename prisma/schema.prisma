@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  userid            String    @id @default(cuid())
+  username          String    @db.VarChar(32)
+  password          String    @db.VarChar(64)
+  email             String    @unique @db.VarChar(320)
+  firstTime Boolean
+  enabledChapters   Int[]
+  completedLessons  Lesson[]
+  completedChapters Chapter[]
+}
+
+model Chapter {
+  ChapterID     String   @id @default(uuid())
+  ChapterName   String
+  ChapterNumber Int
+  Lessons       Lesson[]
+  users         User[]
+}
+
+model Lesson {
+  LessonID     String  @id @default(uuid())
+  LessonName   String
+  LessonNumber Int
+  Chapter      Chapter @relation(fields: [chapterChapterID], references: [ChapterID])
+
+  chapterChapterID String
+  users            User[]
+}
