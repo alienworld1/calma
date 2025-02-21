@@ -1,35 +1,26 @@
+export type Character = {
+  name: string;
+  image: string;
+  scale?: number;
+  width?: number;
+  height?: number;
+  position?: {
+    x: number;
+    y: number;
+  };
+};
+
 type Dialogue = {
-  character: string;
+  character: Character;
   text: string;
-  expression?: string;
-  movement?: Partial<CharacterPosition>;
 };
 
 type Scene = {
   background: string;
-  characters: SceneCharacters;
   dialogues: Dialogue[];
 };
 
 export type StoryData = {
   scenes: Scene[];
-  title?: string;
-};
-
-type CharacterPosition = {
-  x: number;
-  y: number;
-  scale?: number;
-  flip?: boolean;
-};
-
-type CharacterState = {
-  image: string;
-  position: CharacterPosition;
-  expression?: string;
-  speaking?: boolean;
-};
-
-export type SceneCharacters = {
-  [character: string]: CharacterState;
+  characters: { [key: string]: Character };
 };
