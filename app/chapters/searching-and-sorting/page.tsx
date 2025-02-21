@@ -26,13 +26,28 @@ export default async function Page() {
               alt="Sir Linearus"
               width={120}
               height={64}
-              className="flex-none"
+              className="flex-none h-auto"
             />
             <Link
               href={'/lessons/linear-search/story'}
               className="rounded px-4 py-2 bg-accent-light text-black hover:bg-accent-dark transition-colors duration-300"
             >
               Linear Search
+            </Link>
+          </li>
+          <li className="flex items-center gap-24 ml-5">
+            <Image
+              src={'/assets/binaryblade.png'}
+              alt="The Binary Blade"
+              width={120}
+              height={32}
+              className="flex-none h-auto rotate-45 w-auto"
+            />
+            <Link
+              href={'/lessons/binary-search/story'}
+              className="rounded px-4 py-2 bg-gray-700 text-white hover:bg-gray-800 transition-colors duration-300"
+            >
+              Binary Search
             </Link>
           </li>
         </ul>

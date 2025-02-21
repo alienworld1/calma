@@ -56,7 +56,7 @@ export default function VisualNovel({
   });
 
   const narrationTextStyle = new TextStyle({
-    fill: '#e6ccff', // Light purple for narration
+    fill: '#67E8F9', // Light purple for narration
     fontSize: 20,
     fontStyle: 'italic',
     wordWrap: true,

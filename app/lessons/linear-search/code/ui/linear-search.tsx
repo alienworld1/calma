@@ -2,16 +2,11 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { z } from 'zod';
-import { mdiPlay } from '@mdi/js';
+import { mdiPlay, mdiLightbulbOn } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useRouter } from 'next/navigation';
 
 import CodeEditor from '@/app/ui/code/code-editor';
-
-type TestCase = {
-  input: any;
-  expected: any;
-};
 
 type TestResult = {
   success: boolean;
@@ -148,16 +143,26 @@ export default function LinearSearch() {
 
   return (
     <div className="flex flex-col gap-2 w-full items-center">
-      <button
-        className="bg-midnight-purple hover:bg-purple-600 transition-colors duration-300 w-32 px-4 py-2 rounded-lg text-white font-semibold"
-        onClick={runTests}
-        disabled={isRunning}
-      >
-        <Icon path={mdiPlay} size={1} className="inline" />
-        <span>{isRunning ? 'Running...' : 'Run'}</span>
-      </button>
+      <div className="flex justify-between w-10/12">
+        <button
+          className="bg-midnight-purple hover:bg-purple-600 transition-colors duration-300 w-32 px-4 py-2 rounded-lg text-white font-semibold"
+          onClick={runTests}
+          disabled={isRunning}
+        >
+          <Icon path={mdiPlay} size={1} className="inline" />
+          <span>{isRunning ? 'Running...' : 'Run'}</span>
+        </button>
+        <button
+          className="bg-slate-900 hover:bg-slate-950 transition-colors duration-300 w-32 px-4 py-2 rounded-lg text-yellow-400 font-semibold flex gap-2 items-center justify-center"
+          onClick={() => router.replace('/lessons/linear-search/story')}
+          disabled={isRunning}
+        >
+          <Icon path={mdiLightbulbOn} size={1} className="inline" />
+          <span>Hint</span>
+        </button>
+      </div>
       {error && <p className="text-red-500">{error}</p>}
-      <div className="flex w-10/12 gap-2 min-h-[400px] max-h-[450px] overflow-auto">
+      <div className="flex w-10/12 gap-2 min-h-[600px] max-h-[650px] overflow-auto">
         <CodeEditor code={code} onChange={value => setCode(value ?? '')} />
         <ul className="flex flex-col gap-2 bg-gray-950 p-4 overflow-auto w-1/2 rounded">
           {results.map((result, index) => (
