@@ -11,7 +11,8 @@ export type Character = {
 };
 
 type Dialogue = {
-  character: Character;
+  type: 'character' | 'narration';
+  character?: Character;
   text: string;
 };
 

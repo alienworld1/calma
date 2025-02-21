@@ -7,6 +7,10 @@ const SirLinearus: Character = {
   scale: 1,
   width: 338,
   height: 300,
+  position: {
+    x: 0,
+    y: 50,
+  },
 };
 
 const Calma: Character = {
@@ -17,16 +21,8 @@ const Calma: Character = {
   height: 250,
   position: {
     x: 20,
-    y: -20,
+    y: 50,
   },
-};
-
-const Narrator: Character = {
-  name: 'Narrator',
-  image: '/assets/characters/sir-linearus/1.png',
-  scale: 1,
-  width: 338,
-  height: 300,
 };
 
 export default function Page() {
@@ -36,20 +32,55 @@ export default function Page() {
         background: '/assets/background/dungeon-entrance.jpg',
         dialogues: [
           {
+            type: 'narration',
+            text: 'The land of Arrayia is famous for its many twisting, tricky labyrinth that challenge brave warriors.',
+          },
+          {
+            type: 'narration',
+            text: 'These labyrinth are full of traps and confusing paths, and many who enter never make it out.',
+          },
+          {
+            type: 'narration',
+            text: 'But there’s one maze that’s different—the LINEAR Labyrinth. Unlike the others, it’s completely straight and seems to go on forever.',
+          },
+          {
+            type: 'narration',
+            text: 'Now, appears an individual named Sir Linearus, known for his fearlessness and tenacious nature who challenges The LINEAR Labyrinth...',
+          },
+          {
+            type: 'character',
+            character: Calma,
+            text: 'So, this is the "labyrinth"…? I was expecting twists and traps. This just looks like a long hallway.',
+          },
+          {
+            type: 'character',
             character: SirLinearus,
-            text: 'Calma, what is a linear search?',
+            text: 'Exactly. No forks, no turns—just one path forward. Every room is in a straight line, one after the other.',
           },
           {
+            type: 'character',
             character: Calma,
-            text: 'A linear search is a simple search algorithm that finds the position of a target value within a list. It sequentially checks each element of the list until a match is found or the whole list has been searched.',
+            text: 'That’s… oddly simple. So, what’s the plan?',
           },
           {
-            character: Narrator,
-            text: 'Interesting! Can you show me an example?',
+            type: 'character',
+            character: SirLinearus,
+            text: 'We check every room, one by one. If there’s treasure, we take it. If not, we move on to the next.',
           },
           {
+            type: 'character',
             character: Calma,
-            text: "Dude it's linear search you moron.",
+            text: 'No shortcuts? No secret passages?',
+          },
+          {
+            type: 'character',
+            character: SirLinearus,
+            text: "Nope. Just patience and persistence. We search until we find what we're looking for—or reach the end.",
+          },
+          {
+            type: 'character',
+            character: Calma,
+            text: 'Huh. Sounds like a tedious process, but I guess it works. Let’s get started.',
           },
         ],
       },

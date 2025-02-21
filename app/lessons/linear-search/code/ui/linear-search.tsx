@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { z } from 'zod';
 import { mdiPlay } from '@mdi/js';
 import Icon from '@mdi/react';
+import { useRouter } from 'next/navigation';
 
 import CodeEditor from '@/app/ui/code/code-editor';
 
@@ -44,6 +45,9 @@ export default function LinearSearch() {
   const [error, setError] = useState('');
   const [worker, setWorker] = useState<Worker | null>(null);
   const [isRunning, setIsRunning] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false);
+
+  const router = useRouter();
 
   const testCases = [
     {
@@ -100,6 +104,7 @@ export default function LinearSearch() {
 
     setError('');
     setIsRunning(true);
+    setShowCongrats(false);
 
     try {
       const parsedCode = validateInputs();
@@ -128,6 +133,12 @@ export default function LinearSearch() {
         results.push(result);
       }
       setResults(results);
+
+      // Check if all tests passed
+      const allPassed = results.every(result => result.passed);
+      if (allPassed) {
+        setShowCongrats(true);
+      }
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Unknown error');
     } finally {
@@ -176,6 +187,25 @@ export default function LinearSearch() {
           ))}
         </ul>
       </div>
+      {/* Add the congratulatory dialog */}
+      {showCongrats && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg p-8 max-w-md text-center">
+            <h2 className="text-2xl font-bold text-midnight-purple mb-4">
+              🎉 Congratulations! 🎉
+            </h2>
+            <p className="text-gray-700 mb-6">
+              Great work! You have successfully implemented linear search.
+            </p>
+            <button
+              onClick={() => router.push('/chapters/searching-and-sorting')}
+              className="bg-midnight-purple hover:bg-purple-600 text-white px-6 py-2 rounded-lg transition-colors duration-300"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
