@@ -1,5 +1,5 @@
 type TestCase = {
-  input: any;
+  input: any[];
   expected: any;
 };
 
@@ -43,8 +43,8 @@ self.addEventListener('message', async (e: MessageEvent<WorkerMessage>) => {
           return (function() {
             ${code}
             return {
-              runTest: function(input) {
-                return linearSearch(input);
+              runTest: function(inputs) {
+                return linearSearch(...inputs);
               }
             };
           })();

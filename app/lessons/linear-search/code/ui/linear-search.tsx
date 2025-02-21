@@ -146,9 +146,9 @@ export default function LinearSearch() {
         <span>{isRunning ? 'Running...' : 'Run'}</span>
       </button>
       {error && <p className="text-red-500">{error}</p>}
-      <div className="flex w-10/12 gap-2 h-96 overflow-auto">
+      <div className="flex w-10/12 gap-2 min-h-[400px] max-h-[450px] overflow-auto">
         <CodeEditor code={code} onChange={value => setCode(value ?? '')} />
-        <ul className="flex flex-col gap-2 bg-gray-950 p-4 max-h-[400px] overflow-auto w-1/2 rounded">
+        <ul className="flex flex-col gap-2 bg-gray-950 p-4 overflow-auto w-1/2 rounded">
           {results.map((result, index) => (
             <div
               key={index}

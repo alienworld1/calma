@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Stage, Container, Sprite, Text } from '@pixi/react';
 import { TextStyle } from 'pixi.js';
 import WebFont from 'webfontloader';
+import NextImage from 'next/image';
 
 import { type StoryData, type Character } from '@/types/visual-novel';
 
@@ -147,7 +148,12 @@ export default function VisualNovel({
   if (!imagesLoaded) {
     return (
       <div className="w-full h-screen flex items-center justify-center bg-gray-900">
-        <p className="text-white text-xl">Loading scene...</p>
+        <NextImage
+          src="/assets/loading.gif"
+          width={1024}
+          height={576}
+          alt="Loading..."
+        />
       </div>
     );
   }
@@ -159,7 +165,7 @@ export default function VisualNovel({
   });
 
   return (
-    <div className="relative w-full aspect-video flex items-center justify-center bg-gray-900/90">
+    <div className="relative w-full aspect-video flex items-center justify-center bg-gray-900/90 h-screen">
       <Stage
         width={STAGE_WIDTH}
         height={STAGE_HEIGHT}
@@ -186,17 +192,19 @@ export default function VisualNovel({
           />
 
           {/* Character portrait */}
-          <Container alpha={characterTransition ? 0.5 : 1}>
+          <Container alpha={characterTransition ? 1 : 1}>
             <Sprite
               image={currentDialogue.character.image}
-              x={20}
+              x={currentDialogue.character.position?.x ?? 20}
               y={
                 -(currentDialogue.character.height ?? CHARACTER_HEIGHT) +
-                DIALOGUE_HEIGHT
+                DIALOGUE_HEIGHT +
+                (currentDialogue.character.position?.y ?? 0)
               }
               width={currentDialogue.character.width ?? CHARACTER_WIDTH}
               height={currentDialogue.character.height ?? CHARACTER_HEIGHT}
-              scale={currentDialogue.character.scale || 1}
+              scale={currentDialogue.character.scale ?? 1}
+              // scale={0.75}
             />
           </Container>
 
