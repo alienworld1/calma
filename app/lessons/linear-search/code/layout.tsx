@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React from 'react';
 import { Commet } from 'react-loading-indicators';
+import { type Metadata } from 'next';
 
 export default async function Page({
   children,
@@ -21,3 +22,8 @@ export default async function Page({
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: 'Linear Search',
+  description: 'Learn how to search for an element in an array',
+};
