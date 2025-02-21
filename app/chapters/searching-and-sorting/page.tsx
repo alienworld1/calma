@@ -22,7 +22,7 @@ export default async function Page() {
         <ul className="flex flex-col gap-2 m-4 text-lg">
           <li className="flex items-center gap-4">
             <Image
-              src={'/assets/characters/sir-linearus/knight1.png'}
+              src={'/assets/characters/sir-linearus/1.png'}
               alt="Sir Linearus"
               width={120}
               height={64}
