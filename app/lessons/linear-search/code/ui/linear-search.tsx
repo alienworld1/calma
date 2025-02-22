@@ -28,9 +28,11 @@ const codeSchema = z
   );
 
 export default function LinearSearch() {
-  const defaultCode = `function linearSearch(arr, target) {
+  const defaultCode = `function linearSearch(rooms, treasure) {
   // Write your code here
-  // Return the index of the target element if found
+  // rooms is an array where each index is the room number
+  // One of these rooms may contain the treasure
+  // Return the room number if treasure is found
   // Otherwise, return -1
 
 }`;

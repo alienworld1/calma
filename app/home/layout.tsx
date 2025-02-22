@@ -16,7 +16,7 @@ export default async function Page({
   }
 
   return (
-    <div className="h-screen flex gap-2">
+    <div className="h-screen flex gap-2 overflow-hidden">
       <div className="flex flex-col px-2 py-4 justify-between items-center my-4 mx-2 bg-primary/40 rounded">
         <Image
           src={'/assets/logo.png'}

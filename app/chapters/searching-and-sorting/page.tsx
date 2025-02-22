@@ -14,13 +14,18 @@ export default async function Page() {
     <div className="h-full w-full flex justify-center flex-col gap-6 cursor-default relative">
       <header>
         <h1 className="text-4xl font-bold text-white p-4 border-b-4 border-accent-dark">
-          Welcome, {currentUser?.username}!
+          Chapter 1: Searching and Sorting
         </h1>
       </header>
       <main className="flex-1">
-        <h2 className="text-2xl font-bold text-white p-4">Unlocked Lessons</h2>
-        <ul className="flex flex-col gap-2 m-4 text-lg">
-          <li className="flex items-center gap-4">
+        <h2 className="text-3xl font-bold text-white pb-4 px-4">
+          Unlocked Lessons
+        </h2>
+        <article className="flex gap-8 m-4 text-lg">
+          <Link
+            href="/lessons/linear-search/story"
+            className="rounded px-4 py-2 bg-accent-light hover:bg-accent-dark transition-colors duration-300 flex flex-col items-center"
+          >
             <Image
               src={'/assets/characters/sir-linearus/1.png'}
               alt="Sir Linearus"
@@ -28,29 +33,21 @@ export default async function Page() {
               height={64}
               className="flex-none h-auto"
             />
-            <Link
-              href={'/lessons/linear-search/story'}
-              className="rounded px-4 py-2 bg-accent-light text-black hover:bg-accent-dark transition-colors duration-300"
-            >
-              Linear Search
-            </Link>
-          </li>
-          <li className="flex items-center gap-24 ml-5">
-            <Image
-              src={'/assets/binaryblade.png'}
-              alt="The Binary Blade"
-              width={120}
-              height={32}
-              className="flex-none h-auto rotate-45 w-auto"
+            <span className="text-xl font-bold text-white">Linear Search</span>
+          </Link>
+          <Link
+            href="/lessons/binary-search/story"
+            className="rounded px-4 py-2 bg-gray-700 hover:bg-gray-800 transition-colors duration-300 flex flex-col items-center"
+          >
+            <img
+              src="/assets/binaryblade.png"
+              alt="Binary Blade"
+              // width={120}
+              className="h-28 rotate-12 hover:rotate-45 transition-transform"
             />
-            <Link
-              href={'/lessons/binary-search/story'}
-              className="rounded px-4 py-2 bg-gray-700 text-white hover:bg-gray-800 transition-colors duration-300"
-            >
-              Binary Search
-            </Link>
-          </li>
-        </ul>
+            <span className="text-xl font-bold text-white">Binary Search</span>
+          </Link>
+        </article>
       </main>
     </div>
   );
