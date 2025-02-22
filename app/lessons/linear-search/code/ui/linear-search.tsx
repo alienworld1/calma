@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { mdiPlay, mdiLightbulbOn } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 import CodeEditor from '@/app/ui/code/code-editor';
 
@@ -197,16 +198,23 @@ export default function LinearSearch() {
       {/* Add the congratulatory dialog */}
       {showCongrats && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg p-8 max-w-md text-center">
-            <h2 className="text-2xl font-bold text-midnight-purple mb-4">
+          <div className="bg-deep-sapphire-blue rounded-lg px-8 py-4 max-w-md text-center">
+            {/* <h2 className="text-2xl font-bold text-midnight-purple mb-4">
               🎉 Congratulations! 🎉
             </h2>
             <p className="text-gray-700 mb-6">
               Great work! You have successfully implemented linear search.
-            </p>
+            </p> */}
+            <Image
+              src="/assets/congrats.png"
+              width={1024}
+              height={576}
+              alt="Congrats"
+              className="bg-slate-50 rounded-lg pr-4"
+            />
             <button
               onClick={() => router.push('/chapters/searching-and-sorting')}
-              className="bg-midnight-purple hover:bg-purple-600 text-white px-6 py-2 rounded-lg transition-colors duration-300"
+              className="bg-red-600 hover:bg-red-700 text-black px-6 py-2 rounded-lg transition-colors duration-300 mt-4"
             >
               Continue
             </button>
