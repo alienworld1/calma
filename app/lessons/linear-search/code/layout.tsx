@@ -1,8 +1,8 @@
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React from 'react';
-import { Commet } from 'react-loading-indicators';
 import { type Metadata } from 'next';
+import Image from 'next/image';
 
 export default async function Page({
   children,
@@ -16,7 +16,17 @@ export default async function Page({
 
   return (
     <div className="h-screen">
-      <React.Suspense fallback={<Commet color="#e2ede2" size="medium" />}>
+      <React.Suspense
+        fallback={
+          <Image
+            src="/assets/loading.gif"
+            width={1024}
+            height={576}
+            alt="Loading..."
+            className="w-full h-full"
+          />
+        }
+      >
         {children}
       </React.Suspense>
     </div>
