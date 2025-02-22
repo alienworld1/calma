@@ -1,6 +1,8 @@
 import VisualNovelWrapper from '@/app/ui/story/visual-novel-wrapper';
 import { type StoryData, type Character } from '@/types/visual-novel';
 
+import BackgroundMusic from '@/components/background-music';
+
 const SirLinearus: Character = {
   name: 'Sir Linearus',
   image: '/assets/characters/sir-linearus/1.png',
@@ -96,9 +98,12 @@ export default function Page() {
   };
 
   return (
-    <VisualNovelWrapper
-      story={story}
-      redirectLink="/lessons/linear-search/code"
-    />
+    <>
+      <VisualNovelWrapper
+        story={story}
+        redirectLink="/lessons/linear-search/code"
+      />
+      <BackgroundMusic />
+    </>
   );
 }
