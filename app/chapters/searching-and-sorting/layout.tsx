@@ -1,7 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React from 'react';
-import { Commet } from 'react-loading-indicators';
 import Image from 'next/image';
 
 import SignOut from '@/app/ui/dashboard/sign-out';
@@ -28,7 +27,17 @@ export default async function Page({
         <SignOut />
       </div>
       <div className="flex-1 bg-primary/40 rounded m-4">
-        <React.Suspense fallback={<Commet color="#e2ede2" size="medium" />}>
+        <React.Suspense
+          fallback={
+            <Image
+              src="/assets/loading.gif"
+              width={1024}
+              height={576}
+              alt="Loading..."
+              className="w-full h-full"
+            />
+          }
+        >
           {children}
         </React.Suspense>
       </div>
